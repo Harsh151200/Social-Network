@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2020 at 02:07 PM
+-- Generation Time: Nov 08, 2020 at 08:12 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `social_network`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `post_content` varchar(255) NOT NULL,
+  `upload_image` varchar(255) NOT NULL,
+  `post_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -52,11 +66,17 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `f_name`, `l_name`, `user_name`, `describe_user`, `Relationship`, `user_pass`, `user_email`, `user_country`, `user_gender`, `user_birthday`, `user_image`, `user_cover`, `user_reg_date`, `status`, `posts`, `recovery_account`) VALUES
-(1, 'Harsh', 'Patel', 'harsh_patel_31028', 'Hello Coding Cafe.This is my default status!', '...', 'harsh1512', 'harsh@gmail.com', 'India', 'Male', '2020-12-15', 'head_turqoise.png', 'default_cover.jpg', '2020-11-07 11:12:07', 'verified', 'no', 'Iwanttoputading intheuniverse.');
+(1, 'Harsh', 'Patel', 'harsh_patel_31028', 'Hello Coding Cafe.This is my default status!', '...', 'harsh1512', 'harsh@gmail.com', 'India', 'Male', '2020-12-15', '2020-11-06.png.39', 'default_cover.jpg', '2020-11-07 11:12:07', 'verified', 'no', 'Iwanttoputading intheuniverse.');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`post_id`);
 
 --
 -- Indexes for table `users`
@@ -67,6 +87,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
