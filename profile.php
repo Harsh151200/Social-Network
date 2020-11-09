@@ -319,8 +319,8 @@ if(!isset($_SESSION['user_email'])){
 						  echo"
 						  <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
 						  <a href='edit_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-info'>Edit</button></a>
-						  <a href='functions/delete post.php?post_id' style=''float:right;'><button class='btn btn-danger'>Delete</button></a><br>
-						  </div><br><br>
+						  <a href='functions/delete_post.php?post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a><br>
+						  </div><br><br><br>
 
 
 
@@ -331,7 +331,11 @@ if(!isset($_SESSION['user_email'])){
 					
 					
 				
-				} 
+				}
+
+				include("functions/delete_post.php");
+				
+				
 
 
 
@@ -342,6 +346,8 @@ if(!isset($_SESSION['user_email'])){
 
 			
 			 ?>
+	</div>
+	<div class ='col-sm-2'>
 	</div>
 </div>
 </body>
