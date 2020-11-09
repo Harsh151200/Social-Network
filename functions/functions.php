@@ -226,7 +226,7 @@ function get_posts(){
 			$user_image = $row_user['user_image'];
 
 			$user_com = $_SESSION['user_email'];
-			$get_com = "select * from the users where user_email='$user_email'";
+			$get_com = "select * from the users where user_email='$user_com'";
 			$run_com = mysqli_query($con, $get_com);
 			$row_com = mysqli_fetch_array($run_com);
 

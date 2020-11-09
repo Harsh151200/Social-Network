@@ -71,7 +71,7 @@
 			<div id="centered2" class="centered"><h3 style="color:white;"><span class="glyphicon glyphicon-search"></span>&nbsp&nbsp<strong>Hear what People are talking about.</strong></h3></div>
 			<div id="centered3" class="centered"><h3 style="color:white;"><span class="glyphicon glyphicon-search"></span>&nbsp&nbsp<strong>Join the Conversation.</strong></h3></div>
 		</div>
-		<div class="col-sm-6" style="left:8%:">
+		<div class="col-sm-6" style="left:8%;">
 			<img src="images/codingcafelogo.png" class="img-rounded" title="Coding cafe" width="80px" height="80px">
 			<h2><strong>See what's happening in <br> the world right now</strong></h2><br><br>
 			<h4><strong>join Coding Cafe Today.</strong></h4>

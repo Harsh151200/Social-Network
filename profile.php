@@ -225,7 +225,7 @@ if(!isset($_SESSION['user_email'])){
 								</div>
 						   </div><br>
 						   <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
-						   <a href='functions/delete post.php?post_id' style=''float:right;'><button class='btn btn-danger'>Delete</button></a>
+						   <a href='functions/delete_post.php?post_id=$post_id' style=''float:right;'><button class='btn btn-danger'>Delete</button></a>
 					  </div><br><br>
 					  
 					  ";
@@ -235,7 +235,7 @@ if(!isset($_SESSION['user_email'])){
 					
 				
 				}
-				else if(strlen($content) >= 1 && strlen($upload_image) >=1){
+				else if(strlen($content) >= 1 && strlen($upload_image) >= 1){
 					echo"
 					<div id='own_posts'>
 					  <div class='row'>
@@ -256,7 +256,7 @@ if(!isset($_SESSION['user_email'])){
 								</div>
 						   </div><br>
 						   <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
-						   <a href='functions/delete post.php?post_id' style=''float:right;'><button class='btn btn-danger'>Delete</button></a>
+						   <a href='functions/delete_post.php?post_id=$post_id' style=''float:right;'><button class='btn btn-danger'>Delete</button></a>
 					  </div><br><br>
 					  
 					  ";
@@ -271,7 +271,6 @@ if(!isset($_SESSION['user_email'])){
 					<div id='own_posts'>
 					  <div class='row'>
 						   <div class='col-sm-2>
-						   <p><img src='users/$user_image' class='img-circle' width='100px' height='100px'></p>
 						    
 						   </div>
 						   <div class = 'col-sm-6'>
@@ -306,7 +305,7 @@ if(!isset($_SESSION['user_email'])){
 					  $user_email = $row['user_email'];
 
 					  $user = $_SESSION['user_email'];
-					  $get_user = "select * form users where user_email='$user'";
+					  $get_user = "select * from users where user_email='$user_email'";
 					  $run_user = mysqli_query($con, $get_user);
 					  $row = mysqli_fetch_array($run_user);
 
@@ -317,11 +316,11 @@ if(!isset($_SESSION['user_email'])){
 						  echo "<script>window.open('profile.php?u_id=$user_id','_self')</script>";
 					  }else{
 						  echo"
-						  <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
-						  <a href='edit_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-info'>Edit</button></a>
+						  <a href='functions/single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
+						  <a href='functions/edit_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-info'>Edit</button></a>
 						  <a href='functions/delete_post.php?post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a><br>
 						  </div><br><br><br>
-
+						</div>
 
 
 						  ";

@@ -31,7 +31,7 @@ if(isset($_GET['post_id'])){
     $run_post = mysqli_query($con,$get_post);
     $row = mysqli_fetch_array($run_post);
 
-    $post_con = $row'post_content';
+    $post_con = $row['post_content'];
 }
 
 
