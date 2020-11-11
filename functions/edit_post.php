@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-include("../includes/header.php");
+include("../header.php");
 
 if(!isset($_SESSION['user_email'])){
 	header("location: index.php");

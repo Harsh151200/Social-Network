@@ -377,7 +377,7 @@ function get_posts(){
 						$run = mysqli_query($con , $insert);
 
 						echo "<script>alert('Your comment added!')</script>";
-						echo "<script>window.open('single.open?post_id=$post_id' , '_self')</script>
+						echo "<script>window.open('single.php?post_id=$post_id' , '_self')</script>
 						";
 					}
 				}
