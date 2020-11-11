@@ -209,7 +209,7 @@ if(!isset($_SESSION['user_email'])){
 					echo"
 					<div id='own_posts'>
 					  <div class='row'>
-						   <div class='col-sm-2>
+						   <div class='col-sm-2'>
 						   <p><img src='users/$user_image' class='img-circle' width='100px' height='100px'></p>
 						    
 						   </div>
@@ -226,6 +226,7 @@ if(!isset($_SESSION['user_email'])){
 						   </div><br>
 						   <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
 						   <a href='functions/delete_post.php?post_id=$post_id' style=''float:right;'><button class='btn btn-danger'>Delete</button></a>
+					  </div>
 					  </div><br><br>
 					  
 					  ";
@@ -239,7 +240,7 @@ if(!isset($_SESSION['user_email'])){
 					echo"
 					<div id='own_posts'>
 					  <div class='row'>
-						   <div class='col-sm-2>
+						   <div class='col-sm-2'>
 						   <p><img src='users/$user_image' class='img-circle' width='100px' height='100px'></p>
 						    
 						   </div>
@@ -248,7 +249,9 @@ if(!isset($_SESSION['user_email'])){
 							<h4><small style='color:black;'>Updated a post on <strong>$post_date</strong></small></h4>
 						   </div>
 						   <div class='col-sm-4>
+
 						   </div>
+						</div>
 						   <div class='row'>
 								<div class='col-sm-12'>
 								<p>$content</p>
@@ -257,12 +260,10 @@ if(!isset($_SESSION['user_email'])){
 						   </div><br>
 						   <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
 						   <a href='functions/delete_post.php?post_id=$post_id' style=''float:right;'><button class='btn btn-danger'>Delete</button></a>
-					  </div><br><br>
+					
+					 </div><br><br>
 					  
-					  ";
-				
-					
-					
+					  ";		
 				
 				}
 				
@@ -270,7 +271,7 @@ if(!isset($_SESSION['user_email'])){
 					echo"
 					<div id='own_posts'>
 					  <div class='row'>
-						   <div class='col-sm-2>
+						   <div class='col-sm-2'>
 						    
 						   </div>
 						   <div class = 'col-sm-6'>
@@ -288,7 +289,7 @@ if(!isset($_SESSION['user_email'])){
 								<div class = 'col-sm-4'>
 								</div>
 					  </div>
-					  
+					  <br><br><br><br>
 					  ";
 
 					  global $con;

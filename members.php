@@ -26,10 +26,10 @@ if(!isset($_SESSION['user_email'])){
             <div class="col-sm-4">
             </div>
             <div class="col-sm-4">
-                <form class="serach_form" action="">
-                    <input type="text" placeholder="Serach Friend" name="serach_user">
-                    <button class="btn btn-info" type="submit" name="serach_user_btn">
-                        Serach</button>
+                <form class="search_form" action="">
+                    <input type="text" placeholder="Search Friend" name="search_user">
+                    <button class="btn btn-info" type="submit" name="search_user_btn">
+                        Search</button>
                 </form>
             </div>
             <div class="col-sm-4">
