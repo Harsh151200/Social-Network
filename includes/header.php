@@ -1,5 +1,5 @@
 <?php
-include("includes/connection.php");
+include("connection.php");
 include("functions/functions.php");
 ?>
 <nav class="navbar navbar-default">

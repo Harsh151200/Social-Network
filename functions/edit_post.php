@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-include("includes/header.php");
+include("../includes/header.php");
 
 if(!isset($_SESSION['user_email'])){
 	header("location: index.php");
@@ -27,7 +27,7 @@ if(isset($_GET['post_id'])){
 
     $get_id = $_GET['post_id'];
 
-    $get_post = "slect * from posts where post_id='$get_id'";
+    $get_post = "select * from posts where post_id='$get_id'";
     $run_post = mysqli_query($con,$get_post);
     $row = mysqli_fetch_array($run_post);
 
@@ -38,7 +38,7 @@ if(isset($_GET['post_id'])){
 ?>
 <form action =""method="post" id="f">
 <center><h2>Edit Your Post:</h2></center><br>
-<textarea class="form-control" cols="83" rows="4" name="content"<?php echo $post_con;?>
+<textarea class="form-control" cols="83" rows="4" name="content"><?php echo $post_con;?>
 </textarea><br>
 <input type="submit" name="update" value="Update Post" class="btn btn-info"/>
 </form>
