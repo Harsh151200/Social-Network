@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2020 at 08:31 PM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.8
+-- Generation Time: Nov 11, 2020 at 01:36 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -20,6 +21,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `social_network`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `com_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `comment_author` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`com_id`, `post_id`, `user_id`, `comment`, `comment_author`, `date`) VALUES
+(1, 13, 4, 'Great !! Amazing', 'mihir_patel_816391', '2020-11-10 16:31:26'),
+(2, 12, 5, 'Great!!!', 'mihir_patel_816391', '2020-11-10 16:36:04'),
+(3, 12, 5, 'hey cool', 'mihir_patel_816391', '2020-11-10 16:45:42'),
+(4, 12, 5, 'amazing', 'mihir_patel_816391', '2020-11-10 16:48:37');
 
 -- --------------------------------------------------------
 
@@ -49,7 +75,8 @@ INSERT INTO `posts` (`post_id`, `user_id`, `post_content`, `upload_image`, `post
 (7, 3, 'Hii\r\n', '', '2020-11-09 18:28:29'),
 (8, 3, 'Hii', '2019-07-27 (1).png.93', '2020-11-09 18:28:49'),
 (9, 4, 'Hii Guyzz!!\r\n', '2019-07-27.png.15', '2020-11-09 18:30:01'),
-(12, 5, 'Hey!', '', '2020-11-09 19:03:54');
+(12, 5, 'Hey!', '', '2020-11-09 19:03:54'),
+(13, 4, 'Hello!!', '', '2020-11-10 07:32:08');
 
 -- --------------------------------------------------------
 
@@ -85,12 +112,19 @@ INSERT INTO `users` (`user_id`, `f_name`, `l_name`, `user_name`, `describe_user`
 (1, 'Harsh', 'Patel', 'harsh_patel_31028', 'Hello Coding Cafe.This is my default status!', '...', 'harsh1512', 'harsh@gmail.com', 'India', 'Male', '2020-12-15', '2020-11-06.png.39', 'default_cover.jpg', '2020-11-07 11:12:07', 'verified', 'yes', 'Iwanttoputading intheuniverse.'),
 (2, 'Harsh', 'PAtel', 'harsh_patel_928814', 'Hello Coding Cafe.This is my default status!', '...', 'Harsh1512', 'harsh1@gmail.com', 'India', 'Male', '2020-12-15', 'head_sun_flower.png', 'default_cover.jpg', '2020-11-09 18:10:34', 'verified', 'yes', 'Iwanttoputading intheuniverse.'),
 (3, 'Mihir', 'Parmar', 'mihir_parmar_843750', 'Hello Coding Cafe.This is my default status!', '...', 'mihir1911', 'mihir@gmail.com', 'India', 'Male', '2020-02-17', 'head_turqoise.png', 'default_cover.jpg', '2020-11-09 18:28:11', 'verified', 'yes', 'Iwanttoputading intheuniverse.'),
-(4, 'Mihir', 'Parmar', 'mihir_parmar_148862', 'Hello Coding Cafe.This is my default status!', '...', 'mihir1911', 'mihir1@gmail.com', 'India', 'Male', '2020-11-19', 'head_red.png', 'default_cover.jpg', '2020-11-09 18:29:36', 'verified', 'yes', 'Iwanttoputading intheuniverse.'),
-(5, 'Tanuj', 'Patel', 'tanuj_patel_444925', 'Hello Coding Cafe.This is my default status!', '...', 'tanuj1805', 'tanuj@gmail.com', 'India', 'Male', '2020-05-18', 'head_sun_flower.png', 'default_cover.jpg', '2020-11-09 18:59:51', 'verified', 'yes', 'Iwanttoputading intheuniverse.');
+(4, 'Mihir', 'Parmar', 'mihir_parmar_148862', 'Hello Coding Cafe.This is my default status!', '...', 'mihir1911', 'mihir1@gmail.com', 'India', 'Male', '2020-11-19', 'ai 1.PNG.71', 'default_cover.jpg', '2020-11-09 18:29:36', 'verified', 'yes', 'Iwanttoputading intheuniverse.'),
+(5, 'Tanuj', 'Patel', 'tanuj_patel_444925', 'Hello Coding Cafe.This is my default status!', '...', 'tanuj1805', 'tanuj@gmail.com', 'India', 'Male', '2020-05-18', 'head_sun_flower.png', 'default_cover.jpg', '2020-11-09 18:59:51', 'verified', 'yes', 'Iwanttoputading intheuniverse.'),
+(6, 'mihir', 'patel', 'mihir_patel_816391', 'Hello Coding Cafe.This is my default status!', '...', 'mihirpatel', 'mihirpatel@gmail.com', 'India', 'Male', '2020-11-01', 'head_red.png', 'default_cover.jpg', '2020-11-10 12:41:41', 'verified', 'no', 'Iwanttoputading intheuniverse.');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`com_id`);
 
 --
 -- Indexes for table `posts`
@@ -109,16 +143,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
