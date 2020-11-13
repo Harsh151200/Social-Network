@@ -140,6 +140,36 @@ if(!isset($_SESSION['user_email'])){
                                                 <pre> Answer the above question we will ask this question if you forgot your <br>password.</pre>
                                                 <br><br>
                                             </form>
+                                            <?php
+											     if(isset($_POST['sub'])){
+													 $bfn = htmlentities($_POST['content']);
+
+													 if($bfn ==''){
+														echo"<script>alert('please enter something')</script>";
+														echo"<script>window.open('edit_profile.php?u_id$user_id'
+														,'_self')</script>";
+
+														exit();
+													 }
+													 else{
+														 $update = "update users set recovery_
+														 account='$bfn' where user_id='$user_id'";
+
+														 $run = mysqli_query($con, $update);
+
+														 if($run){
+															echo"<script>alert('Working....')</script>";
+															echo"<script>window.open('edit_profile.php?u_id$user_id'
+															,'_self')</script>";
+	
+														 }else{
+															echo"<script>alert('Error while updating information')</script>";
+															echo"<script>window.open('edit_profile.php?u_id$user_id'
+															,'_self')</script>";
+	
+														 }
+													 }
+												 }
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn_default" data-dismiss="modal">close</button> 
@@ -170,3 +200,30 @@ if(!isset($_SESSION['user_email'])){
  </div>
 </body>
 </html>
+<?php
+      if(isset($_POST['update'])){
+          $f_name = htmlentities($_POST['f_name']);
+          $l_name = htmlentities($_POST['l__name']);
+          $u_name = htmlentities($_POST['u_name']);
+          $describe_user = htmlentities($_POST['describe_user']);
+          $Relationship_status = htmlentities($_POST['Relationship']);
+          $u_pass = htmlentities($_POST['u_pass']);
+          $u_email = htmlentities($_POST['u_email']);
+          $u_country = htmlentities($_POST['u_country']);
+          $u_gender = htmlentities($_POST['u_gender']);
+          $u_birthday = htmlentities($_POST['u_birthday']);
+
+          $update = update users set f_pname='$f_name', l_name=$'l_name', user_name=$u_name, describe_user='$describe_user',
+          Relationship_status='$Realtionship_status', user_Pass='$u_Pass', user_email='$u_email', user_country='$u_country',
+          user_gender='$u_grnder', u_birthday='$u_birthday', where user_id='user_id'";
+
+          $run = mysqli_query($con, $update);
+
+														 if($run){
+															echo"<script>alert('Your profile updated')</script>";
+															echo"<script>window.open('edit_profile.php?u_id$user_id'
+															,'_self')</script>";
+	
+														 }
+      }
+?>
