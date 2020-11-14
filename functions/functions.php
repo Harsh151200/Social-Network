@@ -394,15 +394,15 @@ function get_posts(){
 	function user_Posts(){
 		global $con;
 
-		if(iseet($_GET['u_id'])){
+		if(isset($_GET['u_id'])){
 			$u_id = $_GET['u_id'];
 
 		}
 		$get_Posts = "select * from posts where user_id='$u_id' ORDER by 1 DESC LIMIT 5";
 
-		$run_posts = mysqli_query($con, $get_posts);
+		$run_posts = mysqli_query($con, $get_Posts);
 
-		while($row_posts=mysqli_fetch_array($run_Posts)){
+		while($row_posts=mysqli_fetch_array($run_posts)){
 
 			$post_id = $row_posts['post_id'];
 			$user_id = $row_posts['user_id'];
@@ -413,9 +413,9 @@ function get_posts(){
 			$user = "select * from users where user_id='$user_id' AND posts='yes'";
 
 			$run_user = mysqli_query($con,$user);
-			$row_user = myaqli_fetch_array($run_user);
+			$row_user = mysqli_fetch_array($run_user);
 
-			$user_name = $row_posts['user_name'];
+			$user_name = $row_user['user_name'];
 			$user_image = $row_user['user_image'];
 
 			if(isset($_GET['u_id'])){
@@ -423,8 +423,8 @@ function get_posts(){
 
 			}
 			$get_user = "select user_email from users where user_id='$user_id'";
-			$run_user = mysqli_query($con, $get_posts);
-			$row = mysqli_-fetch_array($run_user);
+			$run_user = mysqli_query($con, $get_user);
+			$row = mysqli_fetch_array($run_user);
 
 			$user_email =$row['user_email'];
 
@@ -536,26 +536,23 @@ function get_posts(){
 		global $con;
 
 		if(isset($_GET['search'])){
-			$search_query = htmlentities($GET['user_query']);
+			$search_query = htmlentities($_GET['user_query']);
 		}
 
-		$get_posts = "select* from posts where post_content like '%$search_query%' OR upload_image
-			 like '%$search_query%'";
-			 
-			 $run_posts = mysqli_query)$con, $get_posts);
-
-			 while($row_posts=mysqli_fetch_array($run-posts)){
-
+		$get_posts = "select * from posts where post_content like '%$search_query%' OR upload_image like '%$search_query%' ";
+		$run_posts = mysqli_query($con,$get_posts);
+		while($row_posts=mysqli_fetch_array($run_posts)){
+			
 				$post_id = $row_posts['post_id'];
 				$user_id = $row_posts['user_id'];
 				$content = $row_posts['post_content'];
-				$upload_image = $row_posts['upoad_image'];
+				$upload_image = $row_posts['upload_image'];
 				$post_date = $row_posts['post_date'];
 
 				$user = "select * from users where user_id='$user_id' AND posts='yes'";
 
 				$run_user = mysqli_query($con,$user);
-				$row_user = mysqli_fetch_query($run_user);
+				$row_user = mysqli_fetch_array($run_user);
 
 				$user_name = $row_user['user_name'];
 				$first_name = $row_user['f_name'];

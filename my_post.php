@@ -25,7 +25,7 @@ if(!isset($_SESSION['user_email'])){
       </center>
       <?php user_Posts(); ?>
 
-      <?div>
+      <div>
 	
 </div>
 </body>

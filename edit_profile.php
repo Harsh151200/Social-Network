@@ -37,7 +37,7 @@ if(!isset($_SESSION['user_email'])){
             <tr>
                     <td style="font-weight:bold">Change Your Lastname</td>
                     <td>
-                        <input class="form-control" type="text" name="l_name" required value="<?php echo $lasst_name; ?>">
+                        <input class="form-control" type="text" name="l_name" required value="<?php echo $last_name; ?>">
                 </td>
             </tr>
             <tr>
@@ -87,7 +87,7 @@ if(!isset($_SESSION['user_email'])){
             <td style="font-weight:bold">Country/td>
                     <td>
                         <select class="form-control" name="u_country">
-                        <option><?php echo $user-country; ?></option>
+                        <option><?php echo $user_country; ?></option>
                         <option>United States</option>
                         <option>UAE</option>
                         <option>Pakistan</option>
@@ -103,7 +103,7 @@ if(!isset($_SESSION['user_email'])){
             <td style="font-weight:bold">Gender/td>
                     <td>
                         <select class="form-control" name="u_gender">
-                        <option><?php echo $user-gender; ?></option>
+                        <option><?php echo $user_gender; ?></option>
                         <option>Male</option>
                         <option>Female</option>
                         <option>Other</option>
@@ -169,7 +169,8 @@ if(!isset($_SESSION['user_email'])){
 	
 														 }
 													 }
-												 }
+                                                 }
+                                                 ?>
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn_default" data-dismiss="modal">close</button> 
@@ -213,7 +214,7 @@ if(!isset($_SESSION['user_email'])){
           $u_gender = htmlentities($_POST['u_gender']);
           $u_birthday = htmlentities($_POST['u_birthday']);
 
-          $update = update users set f_pname='$f_name', l_name=$'l_name', user_name=$u_name, describe_user='$describe_user',
+          $update = "update users set f_pname='$f_name', l_name=$'l_name', user_name=$u_name, describe_user='$describe_user',
           Relationship_status='$Realtionship_status', user_Pass='$u_Pass', user_email='$u_email', user_country='$u_country',
           user_gender='$u_grnder', u_birthday='$u_birthday', where user_id='user_id'";
 
