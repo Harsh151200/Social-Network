@@ -10,7 +10,7 @@ if(!isset($_SESSION['user_email'])){
 <html>
 <head>
 	
-	<title>My Post</title>
+	<title>se  results</title>
 	<meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,13 +20,8 @@ if(!isset($_SESSION['user_email'])){
 </head>
 <body>
 <div class="row">
-      <div class="col-sm-12">
-      <center><h2>Your latest posts</h2>
-      </center>
-      <?php user_Posts(); ?>
-
-      <?div>
-	
+	<center> <h2>See Your results here</h2></center>
+    <?php results(); ?>
 </div>
 </body>
 </html>
