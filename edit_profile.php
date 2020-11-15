@@ -3,9 +3,12 @@
 session_start();
 include("header.php");
 
+
 if(!isset($_SESSION['user_email'])){
 	header("location: index.php");
 }
+
+// $con = mysqli_connect("localhost","root","","social_network");
 ?>
 <html>
 <head>
@@ -130,9 +133,9 @@ if(!isset($_SESSION['user_email'])){
                                        <button type="button" class="close" data-dismiss="modal">&times;
                                        </button>
                                        <h4 class="modal-title"> Modal Header</h4>
-                                       </div>
-                                       <div class="modal">
-                                            <form action="recovery.php>id=<?php echo $user_id; ?>" method="post" id="f">
+                                    </div>
+                                    <div class="modal-body">
+                                            <form action="recovery.php?id=<?php echo $user_id; ?>" method="post" id="f">
                                                 <strong> What is your school best friend name?</strong>
                                                 <textarea class="form-control" cols="83" rows="4" name="content" placeholder="someone"></textarea><br>
                                                 <input class="btn btn_default" type="submit" name="sub"
@@ -152,8 +155,7 @@ if(!isset($_SESSION['user_email'])){
 														exit();
 													 }
 													 else{
-														 $update = "update users set recovery_
-														 account='$bfn' where user_id='$user_id'";
+														 $update = "update users set recovery_account='$bfn' where user_id=$user_id";
 
 														 $run = mysqli_query($con, $update);
 
@@ -178,6 +180,8 @@ if(!isset($_SESSION['user_email'])){
                                     </div>
                                 </div>
                             </div>
+                            </div>
+                     </div>
 
                                                     
             
