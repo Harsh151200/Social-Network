@@ -16,7 +16,8 @@ if(!isset($_SESSION['user_email'])){
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="style/home_style2.css">
+    <link rel="stylesheet" type="text/css" href="style/home_style2.css">
+    
 </head>
 <body>
 <div class="row">
@@ -26,11 +27,14 @@ if(!isset($_SESSION['user_email'])){
             <div class="col-sm-4">
             </div>
             <div class="col-sm-4">
-                <form class="search_form" action="">
-                    <input type="text" placeholder="Search Friend" name="search_user">
+                    <form class="navbar-form navbar-left" method="get" action="results.php">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="user_query" placeholder="Search">
+                    </div>    
                     <button class="btn btn-info" type="submit" name="search_user_btn">
                         Search</button>
-                </form>
+                    </form>  
+                
             </div>
             <div class="col-sm-4">
             </div>
