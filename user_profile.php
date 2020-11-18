@@ -260,7 +260,7 @@ if(!isset($_SESSION['user_email'])){
                                             </div>
                                         </div><br>
                                         <a href = 'single.php?post_id=$post_id' style = 'float:right;'>
-                                        <button class = 'btn btn-info'>Comment</button></a></br>
+                                        <button class = 'btn btn-info'>Comment</button></a><br><br><br>
                                 </div><br><br>
                                   
                                   ";

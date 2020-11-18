@@ -39,7 +39,7 @@ if(!isset($_SESSION['user_email'])){
 		top: -33px;
 		cursor: pointer;
 		left: 93px;
-		border-radius: 4px;
+		border-radius: 20px;
 		background-color: rgba(0,0,0,0.1);
 		transform: translate(-50%, -50%);
 	}
@@ -224,8 +224,8 @@ if(!isset($_SESSION['user_email'])){
 								<img id='posts-img' src='imagepost/$upload_image' style='height:350px;'>
 								</div>
 						   </div><br>
-						   <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
-						   <a href='functions/delete_post.php?post_id=$post_id' style=''float:right;'><button class='btn btn-danger'>Delete</button></a>
+						   <a href='single.php?post_id=$post_id' style='float:right;margin-left:10px;'><button class='btn btn-success'>View</button></a>
+						   <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>
 					  </div>
 					  </div><br><br>
 					  
@@ -251,17 +251,17 @@ if(!isset($_SESSION['user_email'])){
 						   <div class='col-sm-4>
 
 						   </div>
-						</div>
+						
 						   <div class='row'>
 								<div class='col-sm-12'>
 								<p>$content</p>
 								<img id='posts-img' src='imagepost/$upload_image' style='height:350px;'>
 								</div>
 						   </div><br>
-						   <a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
-						   <a href='functions/delete_post.php?post_id=$post_id' style=''float:right;'><button class='btn btn-danger'>Delete</button></a>
-					
-					 </div><br><br>
+						   <a href='single.php?post_id=$post_id' style='float:right;margin-left:10px;'><button class='btn btn-success'>View</button></a>
+						   <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>
+						</div>
+					 </div><br><br> 
 					  
 					  ";		
 				
@@ -272,7 +272,7 @@ if(!isset($_SESSION['user_email'])){
 					<div id='own_posts'>
 					  <div class='row'>
 						   <div class='col-sm-2'>
-						    
+						   <p><img src='users/$user_image' class='img-circle' width='100px' height='100px'></p>
 						   </div>
 						   <div class = 'col-sm-6'>
 						   <h3><a style='text-decoration:none; cursor:pointer;color #3897f0;' href='user_profile.php?u_id=$user_id'>$user_name</a></h3>
@@ -286,10 +286,10 @@ if(!isset($_SESSION['user_email'])){
 								<div class='col-sm-6'>
 								    <h3><p>$content</p></h3>
 								</div>
-								<div class = 'col-sm-4'>
+								<div class='col-sm-4'>
 								</div>
 					  </div>
-					  <br><br><br><br>
+					
 					  ";
 
 					  global $con;
@@ -317,34 +317,17 @@ if(!isset($_SESSION['user_email'])){
 						  echo "<script>window.open('profile.php?u_id=$user_id','_self')</script>";
 					  }else{
 						  echo"
-						  <a href='functions/single.php?post_id=$post_id' style='float:right;'><button class='btn btn-success'>View</button></a>
-						  <a href='functions/edit_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-info'>Edit</button></a>
+						  <a href='functions/single.php?post_id=$post_id' style='float:right;margin-left:5px;'><button class='btn btn-success'>View</button></a>
+						  <a href='functions/edit_post.php?post_id=$post_id' style='float:right;margin-left:5px;'><button class='btn btn-info'>Edit</button></a>
 						  <a href='functions/delete_post.php?post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a><br>
-						  </div><br><br><br>
-						</div>
-
-
+						  </div>
+						</div><br><br>
 						  ";
 					  }
-					
-				
-					
-					
-				
-				}
-
+					}
 				include("functions/delete_post.php");
-				
-				
-
-
-
-
-				
-
 			}
 
-			
 			 ?>
 	</div>
 	<div class ='col-sm-2'>
