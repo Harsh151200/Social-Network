@@ -352,7 +352,7 @@ function get_posts(){
 							<div class='panel-body'>	
 								<form action='' method='post' class='form-inline'>
 								<textarea placeholder='Write your comment here!'
-									class='pb-cmnt-textarea' name='comment'></textarea>
+									class='pb-cmnt-textarea' name='comment' style='width:500px; height:70px'></textarea>
 								<button class='btn btn-info pull-right' name='reply'>comment</button>
 								</form>
 							</div>
