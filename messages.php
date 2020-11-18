@@ -72,7 +72,7 @@ if(!isset($_SESSION['user_email'])){
 			
 				if($_GET['u_id'] == 'new')
 				{
-					echo '';
+					echo 'none';
 				}
 
 				else{
@@ -123,15 +123,10 @@ if(!isset($_SESSION['user_email'])){
 				}
 			?>
 		</div>
-
+<br>
 		<div class = 'col-sm-6'>
 				<div class="load_msg" id = "scroll_messages">
 					<?php
-
-						if($get_id == 'new'){
-							echo "";
-						}
-						else{
 						$sel_msg = "Select * from user_messages where 
 										(user_to = '$user_to_msg' AND user_from = '$user_from_msg')
 										OR
@@ -168,7 +163,7 @@ if(!isset($_SESSION['user_email'])){
 									$msg_body
 								</div> <br><br><br>
 									";
-								} }
+								}
 							?>
 						</p>
 					</div>
@@ -187,7 +182,9 @@ if(!isset($_SESSION['user_email'])){
 							echo "
 								<form>
 									<center><h3>Select some to start conversation</h3></center>
-									<textarea class = 'form-control' placeholder='Enter your Message here....' disabled></textarea>
+									<textarea disabled class = 'form-control' placeholder = 'Enter
+										your Message'>
+									</textarea>
 									<input type = 'submit' class = 'btn btn-default' disabled value = 'Send'>
 								</form><br><br>
 							";
@@ -197,7 +194,9 @@ if(!isset($_SESSION['user_email'])){
 						{
 							echo "
 								<form action = '' method = 'POST'>
-									<textarea class = 'form-control' placeholder = 'Enter your Message....' name = 'msg_box' id = 'message_textarea'></textarea>
+									<textarea class = 'form-control' placeholder = 'Enter
+										your Message' name = 'msg_box' id = 'message_textarea'>
+									</textarea>
 									<input type = 'submit' name = 'send_msg' id = 'btn-msg'  value = 'Send'>
 								</form><br><br>
 							";
@@ -233,11 +232,6 @@ if(!isset($_SESSION['user_email'])){
 		</div>
 		<div class="col-sm-3">
 			<?php
-				if($get_id == 'new'){
-					echo "";
-				}
-				else{
-
 				if(isset($_GET['u_id'])){
 				global $con;
 
@@ -311,7 +305,7 @@ if(!isset($_SESSION['user_email'])){
 									</div>
                        
             			   ";
-				}}
+				}
 			}
 			?>	
 		</div>
