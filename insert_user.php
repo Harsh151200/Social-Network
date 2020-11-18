@@ -24,7 +24,7 @@ include("includes/connection.php");
 		}
 
 		$check_email = "select * from users where user_email='$email'";
-		$run_email = mysqli_query($check_email);
+		$run_email = mysqli_query($con,$check_email);
 
 		$check = mysqli_num_rows($run_email);
 
