@@ -684,7 +684,7 @@ function get_posts(){
 					<div class='row' id='find_people'>
 						<div class='col-sm-4'>
 							<a href='user_profile.php?u_id=$user_id'>
-							<img src='users/$user_image' width='150px' height='140px'
+							<img src='users/$user_image' class='img-circle' width='160px' height='150px'
 								title='$username' style='float:left; ,margin:1px;'/>
 							</a>
 						</div><br><br>

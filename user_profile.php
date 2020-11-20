@@ -192,9 +192,9 @@ if(!isset($_SESSION['user_email'])){
                                                 <img src = 'imagepost/$upload_image' id = 'posts-img' height:'350px'>
                                             </div>
                                         </div><br>
+                                        <a href = 'single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class = 'btn btn-info'>Comment</button></a>
                                         <a href='single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class='btn btn-success'>View</button></a>
-                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>
-
+                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>    
                                     </div><br></br>
                                 ";
                             }
@@ -227,8 +227,9 @@ if(!isset($_SESSION['user_email'])){
                                                 <img src = 'imagepost/$upload_image' id = 'posts-img' height:'350px'>
                                             </div>
                                         </div><br>
+                                        <a href = 'single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class = 'btn btn-info'>Comment</button></a>
                                         <a href='single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class='btn btn-success'>View</button></a>
-                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>
+                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>    
 
                                     </div><br></br>
                                 ";
@@ -258,9 +259,11 @@ if(!isset($_SESSION['user_email'])){
                                             <div class='col-sm-12'>
                                                 <h3><p>$content</p></h3>
                                             </div>
-                                        </div><br>
-                                        <a href = 'single.php?post_id=$post_id' style = 'float:right;'>
-                                        <button class = 'btn btn-info'>Comment</button></a><br><br><br>
+                                        </div><br> 
+                                        <a href = 'single.php?post_id=$post_id' style = 'float:right; margin-left: 10px;'><button class = 'btn btn-info'>Comment</button></a>
+                                        <a href='single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class='btn btn-success'>View</button></a>
+                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a> 
+                                        <br><br><br>
                                 </div><br><br>
                                   
                                   ";
