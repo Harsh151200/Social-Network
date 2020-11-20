@@ -692,7 +692,10 @@ function get_posts(){
 							<a style='text-decoration:none;cursor:pointer;color:#3897f0;'
 							href='user_profile.php?u_id=$user_id'>
 							<strong><h2>$f_name $l_name</h2></strong>
+							<button class='btn btn-success'>Add Friend</button>
+							<button class='btn btn-danger'>Message</button>
 							</a>
+							
 						</div>
 						<div class='col-sm-3'>
 						</div>
