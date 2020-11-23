@@ -695,7 +695,6 @@ function get_posts(){
 							<button class='btn btn-success'>Add Friend</button>
 							<button class='btn btn-danger'>Message</button>
 							</a>
-							
 						</div>
 						<div class='col-sm-3'>
 						</div>

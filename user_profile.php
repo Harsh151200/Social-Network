@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php
+
+use Symfony\Contracts\HttpClient\Test\TestHttpServer;
+
 session_start();
 include("header.php");
 
@@ -29,6 +32,8 @@ if(!isset($_SESSION['user_email'])){
             height: 300px;
             width: 100%;
         }
+
+        
 </style>
 <body>
 <div class="row">
@@ -165,6 +170,13 @@ if(!isset($_SESSION['user_email'])){
                             $l_name = $row_user['l_name'];
                             $user_image = $row_user['user_image'];
 
+                            $like = "SELECT COUNT(user_id) FROM `like` WHERE post_id = 1 ";
+                            $run_like = mysqli_query($con, $like);
+                            $row_like = mysqli_fetch_array($run_like);
+
+                            
+
+
                             if($content=="No" && strlen($upload_image) >= 1){
                                 echo "
                                     <div id = 'own_posts'>
@@ -260,9 +272,14 @@ if(!isset($_SESSION['user_email'])){
                                                 <h3><p>$content</p></h3>
                                             </div>
                                         </div><br> 
+                                    
+                                        <p>$row_like</p>
+                                        <style='float:left;'><button class='btn btn-info'>Like</button>
+                                            
                                         <a href = 'single.php?post_id=$post_id' style = 'float:right; margin-left: 10px;'><button class = 'btn btn-info'>Comment</button></a>
                                         <a href='single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class='btn btn-success'>View</button></a>
-                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a> 
+                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>
+                                        
                                         <br><br><br>
                                 </div><br><br>
                                   
