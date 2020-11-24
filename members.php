@@ -27,9 +27,9 @@ if(!isset($_SESSION['user_email'])){
             <div class="col-sm-4">
             </div>
             <div class="col-sm-4">
-                    <form class="navbar-form navbar-left" method="get" action="results.php">
+                    <form class="navbar-form navbar-left"  action="">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="user_query" placeholder="Search">
+                        <input type="text" class="form-control" name="search_user" placeholder="Search">
                     </div>    
                     <button class="btn btn-info" type="submit" name="search_user_btn">
                         Search</button>

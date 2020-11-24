@@ -8,8 +8,9 @@ if(!isset($_SESSION['user_email'])){
 }
 ?>
 <html>
+
 <head>
-	<?php
+    <?php
 		$user = $_SESSION['user_email'];
 		$get_user = "select * from users where user_email='$user'";
 		$run_user = mysqli_query($con,$get_user);
@@ -17,54 +18,61 @@ if(!isset($_SESSION['user_email'])){
 
 		$user_name = $row['user_name'];
 	?>
-	<title><?php echo "$user_name"; ?></title>
-	<meta charset="utf-8">
- 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="style/home_style2.css">
+    <title><?php echo "$user_name"; ?></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/home_style2.css">
 </head>
 <style>
-	#cover-img{
-		height: 400px;
-		width: 100%;
-	}#profile-img{
-		position: absolute;
-		top: 160px;
-		left: 40px;
-	}
-	#update_profile{
-		position: relative;
-		top: -33px;
-		cursor: pointer;
-		left: 93px;
-		border-radius: 20px;
-		background-color: rgba(0,0,0,0.1);
-		transform: translate(-50%, -50%);
-	}
-	#button_profile{
-		position: absolute;
-		top: 82%;
-		left: 50%;
-		cursor: pointer;
-		transform: translate(-50%, -50%);
-	}
-	#own_posts{
-		border: 5px solid #e6e6e6;
-		padding: 40px 50px;
-	}
-	#post_img{
-		height: 300px;
-		width: 100%; 
-	}
+#cover-img {
+    height: 400px;
+    width: 100%;
+}
+
+#profile-img {
+    position: absolute;
+    top: 160px;
+    left: 40px;
+}
+
+#update_profile {
+    position: relative;
+    top: -33px;
+    cursor: pointer;
+    left: 93px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+}
+
+#button_profile {
+    position: absolute;
+    top: 82%;
+    left: 50%;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+}
+
+#own_posts {
+    border: 5px solid #e6e6e6;
+    padding: 40px 50px;
+}
+
+#post_img {
+    height: 300px;
+    width: 100%;
+}
 </style>
+
 <body>
-<div class="row">
-	<div class="col-sm-2">	
-	</div>
-	<div class="col-sm-8">
-		<?php
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
+            <?php
 			echo"
 			<div>
 				<div><img id='cover-img' class='img-rounded' src='cover/$user_cover' alt='cover'></div>
@@ -99,7 +107,7 @@ if(!isset($_SESSION['user_email'])){
 			</div><br>
 			";
 		?>
-		<?php
+            <?php
 
 			if(isset($_POST['submit'])){
 
@@ -126,10 +134,10 @@ if(!isset($_SESSION['user_email'])){
 			}
 
 		?>
-	</div>
+        </div>
 
 
-	<?php
+        <?php
 		if(isset($_POST['update'])){
 
 				$u_image = $_FILES['u_image']['name'];
@@ -154,14 +162,14 @@ if(!isset($_SESSION['user_email'])){
 
 			}
 	?>
-	<div class="col-sm-2">
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-2">
-	</div>
-	<div class="col-sm-2" style="background-color: #e6e6e6;text-align: center;left: 0.8%;border-radius: 5px;">
-		<?php
+        <div class="col-sm-2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-2" style="background-color: #e6e6e6;text-align: center;left: 0.8%;border-radius: 5px;">
+            <?php
 		echo"
 			<center><h2><strong>About</strong></h2></center>
 			<center><h4><strong>$first_name $last_name</strong></h4></center>
@@ -173,10 +181,10 @@ if(!isset($_SESSION['user_email'])){
 			<p><strong>Date of Birth: </strong> $user_birthday</p><br>
 		";
 		?>
-	</div>
-	<div class ="col-sm-6">
-	         <!--display user posts -->
-			 <?php
+        </div>
+        <div class="col-sm-6">
+            <!--display user posts -->
+            <?php
 			 global $con;
 
 			 if(isset($_GET['u_id'])){
@@ -203,6 +211,11 @@ if(!isset($_SESSION['user_email'])){
 				$user_name = $row_user['user_name'];
 				$user_image = $row_user['user_image'];
 
+				$like = "SELECT `no_of_likes` FROM `posts` WHERE post_id = $post_id ";
+                            $run_like = mysqli_query($con, $like);
+                            $row_like = mysqli_fetch_array($run_like);
+                            $like = $row_like['no_of_likes'];
+
 				//display posts
 
 				if($content == "No" && strlen($upload_image) >=1){
@@ -219,13 +232,14 @@ if(!isset($_SESSION['user_email'])){
 						   </div>
 						   <div class='col-sm-4>
 						   </div>
+						</div>
 						   <div class='row'>
 								<div class='col-sm-12'>
 								<img id='posts-img' src='imagepost/$upload_image' style='height:350px;'>
 								</div>
-						   </div><br>
-						   <a href='single.php?post_id=$post_id' style='float:right;margin-left:10px;'><button class='btn btn-success'>View</button></a>
-						   <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>
+						   </div>
+						   <a href='single.php?post_id=$post_id' style='float:right;margin-left:10px;'><br><button class='btn btn-success'>View</button></a>
+						   <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><br><button class='btn btn-danger'>Delete</button></a>
 					  </div>
 					  </div><br><br>
 					  
@@ -258,8 +272,8 @@ if(!isset($_SESSION['user_email'])){
 								<img id='posts-img' src='imagepost/$upload_image' style='height:350px;'>
 								</div>
 						   </div><br>
-						   <a href='single.php?post_id=$post_id' style='float:right;margin-left:10px;'><button class='btn btn-success'>View</button></a>
-						   <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>
+						   <a href='single.php?post_id=$post_id' style='float:right;margin-left:10px;'><br><button class='btn btn-success'>View</button></a>
+						   <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><br><button class='btn btn-danger'>Delete</button></a>
 						</div>
 					 </div><br><br> 
 					  
@@ -289,10 +303,9 @@ if(!isset($_SESSION['user_email'])){
 								<div class='col-sm-4'>
 								</div>
 					  </div>
-					
-					  ";
-
-					  global $con;
+					  <span>";
+                                       
+                      global $con;
 
 
 					  if(isset($_GET['u_id'])){
@@ -316,10 +329,10 @@ if(!isset($_SESSION['user_email'])){
 					  if($u_email != $user_email){
 						  echo "<script>window.open('profile.php?u_id=$user_id','_self')</script>";
 					  }else{
-						  echo"
-						  <a href='functions/single.php?post_id=$post_id' style='float:right;margin-left:5px;'><button class='btn btn-success'>View</button></a>
-						  <a href='functions/edit_post.php?post_id=$post_id' style='float:right;margin-left:5px;'><button class='btn btn-info'>Edit</button></a>
-						  <a href='functions/delete_post.php?post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a><br>
+						echo"
+						  <a href='single.php?post_id=$post_id' style='float:right;margin-left:5px;'><br><br><button class='btn btn-success'>View</button></a>
+						  <a href='functions/edit_post.php?post_id=$post_id' style='float:right;margin-left:5px;'><br><br><button class='btn btn-info'>Edit</button></a>
+						  <a href='functions/delete_post.php?post_id' style='float:right;'><br><br><button class='btn btn-danger'>Delete</button></a><br>
 						  </div>
 						</div><br><br>
 						  ";
@@ -329,9 +342,10 @@ if(!isset($_SESSION['user_email'])){
 			}
 
 			 ?>
-	</div>
-	<div class ='col-sm-2'>
-	</div>
-</div>
+        </div>
+        <div class='col-sm-2'>
+        </div>
+    </div>
 </body>
+
 </html>

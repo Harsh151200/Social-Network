@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect("localhost","root","","social_network") or die("Connection was not established");
+ $con = mysqli_connect("localhost","root","","social_network") or die("Connection was not established");
 
 //function for inserting post
 
@@ -101,6 +101,12 @@ function get_posts(){
 		$user_name = $row_user['user_name'];
 		$user_image = $row_user['user_image'];
 
+		//get likes
+		$like = "SELECT `no_of_likes` FROM `posts` WHERE post_id = $post_id ";
+                            $run_like = mysqli_query($con, $like);
+                            $row_like = mysqli_fetch_array($run_like);
+                            $like = $row_like['no_of_likes'];
+
 		//now displaying posts from database
 
 		if($content=="No" && strlen($upload_image) >= 1){
@@ -125,6 +131,33 @@ function get_posts(){
 							<img id='posts-img' src='imagepost/$upload_image' style='height:350px;'>
 						</div>
 					</div><br>
+					<span><b>$like Likes</b></span><br>";
+                                       
+                                        echo"
+                                            	<div style = 'float:left;'>
+                                                            <form action='' method='post' class='form-inline'>
+                                        
+                                                            <button class='btn btn-info pull-right' name='likes'>Like</button>
+                                                            </form>
+                                                  </div>      
+                                            ";
+
+                                            if(isset($_POST['likes'])){
+                                                $like_user_id = $_GET['u_id'];
+                                                $con = mysqli_connect("localhost","root","","social_network") or die("Connection was not established");
+                                                    $insert = "INSERT INTO `like` (`user_id`, `post_id`) VALUES ('$like_user_id', '$post_id');";
+
+                                                    if(mysqli_query($con , $insert))
+                                                    {
+                                                    echo "<script>alert('You liked a post!')</script>";
+                                                    echo "<script>window.open('home.php?u_id=$user_id' , '_self')</script>
+                                                    
+                                                    ";
+                                                    }
+                                                
+                                            }
+                                        
+                                        echo " 
 					<a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-info'>Comment</button></a><br>
 				</div>
 				<div class='col-sm-3'>
@@ -156,6 +189,33 @@ function get_posts(){
 							<img id='posts-img' src='imagepost/$upload_image' style='height:350px;'>
 						</div>
 					</div><br>
+					<span><b>$like Likes</b></span><br>";
+                                       
+                                        echo"
+                                            	<div style = 'float:left;'>
+                                                            <form action='' method='post' class='form-inline'>
+                                        
+                                                            <button class='btn btn-info pull-right' name='likes'>Like</button>
+                                                            </form>
+                                                  </div>      
+                                            ";
+
+                                            if(isset($_POST['likes'])){
+                                                $like_user_id = $_GET['u_id'];
+                                                $con = mysqli_connect("localhost","root","","social_network") or die("Connection was not established");
+                                                    $insert = "INSERT INTO `like` (`user_id`, `post_id`) VALUES ('$like_user_id', '$post_id');";
+
+                                                    if(mysqli_query($con , $insert))
+                                                    {
+                                                    echo "<script>alert('You liked a post!')</script>";
+                                                    echo "<script>window.open('home.php?u_id=$user_id' , '_self')</script>
+                                                    
+                                                    ";
+                                                    }
+                                                
+                                            }
+                                        
+                                        echo " 
 					<a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-info'>Comment</button></a><br>
 				</div>
 				<div class='col-sm-3'>
@@ -186,6 +246,33 @@ function get_posts(){
 							<h3><p>$content</p></h3>
 						</div>
 					</div><br>
+					<span><b>$like Likes</b></span><br>";
+                                       
+                                        echo"
+                                            	<div style = 'float:left;'>
+                                                            <form action='' method='post' class='form-inline'>
+                                        
+                                                            <button class='btn btn-info pull-right' name='likes'>Like</button>
+                                                            </form>
+                                                  </div>      
+                                            ";
+
+                                            if(isset($_POST['likes'])){
+                                                $like_user_id = $_GET['u_id'];
+                                                $con = mysqli_connect("localhost","root","","social_network") or die("Connection was not established");
+                                                    $insert = "INSERT INTO `like` (`user_id`, `post_id`) VALUES ('$like_user_id', '$post_id');";
+
+                                                    if(mysqli_query($con , $insert))
+                                                    {
+                                                    echo "<script>alert('You liked a post!')</script>";
+                                                    echo "<script>window.open('home.php?u_id=$user_id' , '_self')</script>
+                                                    
+                                                    ";
+                                                    }
+                                                
+                                            }
+                                        
+                                        echo " 
 					<a href='single.php?post_id=$post_id' style='float:right;'><button class='btn btn-info'>Comment</button></a><br>
 				</div>
 				<div class='col-sm-3'>
@@ -537,8 +624,9 @@ function get_posts(){
 
 		if(isset($_GET['search'])){
 			$search_query = htmlentities($_GET['user_query']);
+			echo "<script>alert('$search_query')</script>";
+		
 		}
-
 		$get_posts = "select * from posts where post_content like '%$search_query%' OR upload_image like '%$search_query%' ";
 		$run_posts = mysqli_query($con,$get_posts);
 		while($row_posts=mysqli_fetch_array($run_posts)){
@@ -651,6 +739,7 @@ function get_posts(){
 
 				
 			 }
+			
 	}
 
 
@@ -684,7 +773,7 @@ function get_posts(){
 					<div class='row' id='find_people'>
 						<div class='col-sm-4'>
 							<a href='user_profile.php?u_id=$user_id'>
-							<img src='users/$user_image' class='img-circle' width='160px' height='150px'
+							<img src='users/$user_image' width='150px' height='140px'
 								title='$username' style='float:left; ,margin:1px;'/>
 							</a>
 						</div><br><br>
@@ -692,8 +781,6 @@ function get_posts(){
 							<a style='text-decoration:none;cursor:pointer;color:#3897f0;'
 							href='user_profile.php?u_id=$user_id'>
 							<strong><h2>$f_name $l_name</h2></strong>
-							<button class='btn btn-success'>Add Friend</button>
-							<button class='btn btn-danger'>Message</button>
 							</a>
 						</div>
 						<div class='col-sm-3'>
