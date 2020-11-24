@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2020 at 07:12 AM
+-- Generation Time: Nov 24, 2020 at 10:28 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -75,6 +75,16 @@ INSERT INTO `like` (`user_id`, `post_id`) VALUES
 ('1', '2'),
 ('2', '1');
 
+--
+-- Triggers `like`
+--
+DELIMITER $$
+CREATE TRIGGER `update_no_of_likes` AFTER INSERT ON `like` FOR EACH ROW UPDATE `Posts`
+SET no_of_likes = no_of_likes + 1
+WHERE post_Id = new.post_Id
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -97,7 +107,23 @@ INSERT INTO `posts` (`post_id`, `user_id`, `post_content`, `upload_image`, `post
 (4, 2, 'Hello !!', '', '2020-11-18 06:30:52'),
 (5, 2, 'How are you ?', '', '2020-11-18 06:31:14'),
 (8, 2, 'No', 'Screenshot (18).png.71', '2020-11-18 12:15:56'),
-(9, 2, 'No', 'Screenshot (22).png.33', '2020-11-18 12:20:54');
+(10, 2, 'hello!!', 'Screenshot (23).png.29', '2020-11-24 09:15:28');
+
+--
+-- Triggers `posts`
+--
+DELIMITER $$
+CREATE TRIGGER `delete_no_of_posts` AFTER DELETE ON `posts` FOR EACH ROW UPDATE `users`
+SET no_of_posts = no_of_posts - 1
+WHERE user_id  = old.user_id
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `update_no_of_posts` AFTER INSERT ON `posts` FOR EACH ROW UPDATE `users`
+SET no_of_posts = no_of_posts + 1
+WHERE user_id = new.user_id
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -122,16 +148,17 @@ CREATE TABLE `users` (
   `user_reg_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` text NOT NULL,
   `posts` text NOT NULL,
-  `recovery_account` varchar(255) NOT NULL
+  `recovery_account` varchar(255) NOT NULL,
+  `no_of_posts` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `f_name`, `l_name`, `user_name`, `describe_user`, `Relationship`, `user_pass`, `user_email`, `user_country`, `user_gender`, `user_birthday`, `user_image`, `user_cover`, `user_reg_date`, `status`, `posts`, `recovery_account`) VALUES
-(1, 'Harsh', 'Patel', 'harsh_patel_736619', 'Hello Coding Cafe.This is my default status!', '...', 'harsh1512', 'harsh@gmail.com', 'India', 'Male', '2020-12-15', '2020-01-04 (1).png.11', 'default_cover.jpg', '2020-11-17 06:55:55', 'verified', 'no', 'Iwanttoputading intheuniverse.'),
-(2, 'Mihir', 'Parmar', 'mihir_parmar_745616', 'Hello Coding Cafe.This is my default status!', '...', 'mihir1911', 'mihir@gmail.com', 'India', 'Male', '2020-11-19', '2020-11-11 (5).png.93', 'default_cover.jpg', '2020-11-17 06:56:40', 'verified', 'yes', 'Iwanttoputading intheuniverse.');
+INSERT INTO `users` (`user_id`, `f_name`, `l_name`, `user_name`, `describe_user`, `Relationship`, `user_pass`, `user_email`, `user_country`, `user_gender`, `user_birthday`, `user_image`, `user_cover`, `user_reg_date`, `status`, `posts`, `recovery_account`, `no_of_posts`) VALUES
+(1, 'Harsh', 'Patel', 'harsh_patel_736619', 'Hello Coding Cafe.This is my default status!', '...', 'harsh1512', 'harsh@gmail.com', 'India', 'Male', '2020-12-15', '2020-01-04 (1).png.11', 'default_cover.jpg', '2020-11-17 06:55:55', 'verified', 'no', 'Iwanttoputading intheuniverse.', 0),
+(2, 'Mihir', 'Parmar', 'mihir_parmar_745616', 'Hello Coding Cafe.This is my default status!', '...', 'mihir1911', 'mihir@gmail.com', 'India', 'Male', '2020-11-19', '2020-11-11 (5).png.93', 'default_cover.jpg', '2020-11-17 06:56:40', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 4);
 
 -- --------------------------------------------------------
 
@@ -208,7 +235,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
