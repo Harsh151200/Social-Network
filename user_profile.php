@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <?php
+
+use Symfony\Contracts\HttpClient\Test\TestHttpServer;
+
 session_start();
 include("header.php");
 
@@ -8,31 +11,33 @@ if(!isset($_SESSION['user_email'])){
 }
 ?>
 <html>
+
 <head>
-	
-	<title>Find People</title>
-	<meta charset="utf-8">
- 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="style/home_style2.css">
+
+    <title>Find People</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/home_style2.css">
 </head>
 <style>
-            #own_posts{
-            border: 5px solid #e6e6e6;
-            padding:  40px 50px;
-            width:  90%;
-        }
+#own_posts {
+    border: 5px solid #e6e6e6;
+    padding: 40px 50px;
+    width: 90%;
+}
 
-        #posts-img{
-            height: 300px;
-            width: 100%;
-        }
+#posts-img {
+    height: 300px;
+    width: 100%;
+}
 </style>
+
 <body>
-<div class="row">
-    <?php
+    <div class="row">
+        <?php
         if(isset($_GET['u_id'])){
             $u_id = $_GET['u_id'];
         }
@@ -42,7 +47,7 @@ if(!isset($_SESSION['user_email'])){
         else{
     ?>
 
-    <div class="col-sm-12">
+        <div class="col-sm-12">
             <?php
                     if(isset($_GET['u_id'])){
                         global $con;
@@ -137,8 +142,10 @@ if(!isset($_SESSION['user_email'])){
                  }
             ?>
             <div class="col-sm-8">
-                 <center><h1><strong><?php    echo "$f_name $l_name";   ?></strong> Posts</h1></center>
-                 <?php
+                <center>
+                    <h1><strong><?php    echo "$f_name $l_name";   ?></strong> Posts</h1>
+                </center>
+                <?php
                     global $con;
                     if(isset($_GET['u_id']))
                     {
@@ -164,6 +171,13 @@ if(!isset($_SESSION['user_email'])){
                             $f_name = $row_user['f_name'];
                             $l_name = $row_user['l_name'];
                             $user_image = $row_user['user_image'];
+
+                            $like = "SELECT `no_of_likes` FROM `posts` WHERE post_id = $post_id ";
+                            $run_like = mysqli_query($con, $like);
+                            $row_like = mysqli_fetch_array($run_like);
+                            $like = $row_like['no_of_likes'];
+                            
+
 
                             if($content=="No" && strlen($upload_image) >= 1){
                                 echo "
@@ -192,9 +206,36 @@ if(!isset($_SESSION['user_email'])){
                                                 <img src = 'imagepost/$upload_image' id = 'posts-img' height:'350px'>
                                             </div>
                                         </div><br>
-                                        <a href='single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class='btn btn-success'>View</button></a>
-                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>
+                                        <span>$like Likes</span><br>";
+                                       
+                                        echo"
+                                            	<div style = 'float:left;'>
+                                                            <form action='' method='post' class='form-inline'>
+                                        
+                                                            <button class='btn btn-info pull-right' name='likes'>Like</button>
+                                                            </form>
+                                                  </div>      
+                                            ";
 
+                                            if(isset($_POST['likes'])){
+                                                $like_user_id = $_GET['u_id'];
+                                                $con = mysqli_connect("localhost","root","","social_network") or die("Connection was not established");
+                                                    $insert = "INSERT INTO `like` (`user_id`, `post_id`) VALUES ('$like_user_id', '$post_id');";
+
+                                                    if(mysqli_query($con , $insert))
+                                                    {
+                                                    echo "<script>alert('You liked a post!')</script>";
+                                                    echo "<script>window.open('user_profile.php?u_id=$user_id' , '_self')</script>
+                                                    
+                                                    ";
+                                                    }
+                                                
+                                            }
+                                        
+                                        echo " 
+                                        <a href = 'single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class = 'btn btn-info'>Comment</button></a>
+                                        <a href='single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class='btn btn-success'>View</button></a>
+                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>    
                                     </div><br></br>
                                 ";
                             }
@@ -227,8 +268,36 @@ if(!isset($_SESSION['user_email'])){
                                                 <img src = 'imagepost/$upload_image' id = 'posts-img' height:'350px'>
                                             </div>
                                         </div><br>
+                                        <span>$like Likes</span><br>";
+                                       
+                                        echo"
+                                            	<div style = 'float:left;'>
+                                                            <form action='' method='post' class='form-inline'>
+                                        
+                                                            <button class='btn btn-info pull-right' name='likes'>Like</button>
+                                                            </form>
+                                                  </div>      
+                                            ";
+
+                                            if(isset($_POST['likes'])){
+                                                $like_user_id = $_GET['u_id'];
+                                                $con = mysqli_connect("localhost","root","","social_network") or die("Connection was not established");
+                                                    $insert = "INSERT INTO `like` (`user_id`, `post_id`) VALUES ('$like_user_id', '$post_id');";
+
+                                                    if(mysqli_query($con , $insert))
+                                                    {
+                                                    echo "<script>alert('You liked a post!')</script>";
+                                                    echo "<script>window.open('user_profile.php?u_id=$user_id' , '_self')</script>
+                                                    
+                                                    ";
+                                                    }
+                                                
+                                            }
+                                        
+                                        echo " 
+                                        <a href = 'single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class = 'btn btn-info'>Comment</button></a>
                                         <a href='single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class='btn btn-success'>View</button></a>
-                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>
+                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>    
 
                                     </div><br></br>
                                 ";
@@ -258,9 +327,40 @@ if(!isset($_SESSION['user_email'])){
                                             <div class='col-sm-12'>
                                                 <h3><p>$content</p></h3>
                                             </div>
-                                        </div><br>
-                                        <a href = 'single.php?post_id=$post_id' style = 'float:right;'>
-                                        <button class = 'btn btn-info'>Comment</button></a><br><br><br>
+                                        </div><br> 
+                                    
+                                        <span>$like Likes</span><br>";
+                                       
+                                        echo"
+                                            	<div style = 'float:left;'>
+                                                            <form action='' method='post' class='form-inline'>
+                                        
+                                                            <button class='btn btn-info pull-right' name='likes'>Like</button>
+                                                            </form>
+                                                  </div>      
+                                            ";
+
+                                            if(isset($_POST['likes'])){
+                                                $like_user_id = $_GET['u_id'];
+                                                $con = mysqli_connect("localhost","root","","social_network") or die("Connection was not established");
+                                                    $insert = "INSERT INTO `like` (`user_id`, `post_id`) VALUES ('$like_user_id', '$post_id');";
+
+                                                    if(mysqli_query($con , $insert))
+                                                    {
+                                                    echo "<script>alert('You liked a post!')</script>";
+                                                    echo "<script>window.open('user_profile.php?u_id=$user_id' , '_self')</script>
+                                                    
+                                                    ";
+                                                    }
+                                                
+                                            }
+                                        
+                                        echo "  
+                                        <a href = 'single.php?post_id=$post_id' style = 'float:right; margin-left: 10px;'><button class = 'btn btn-info'>Comment</button></a>
+                                        <a href='single.php?post_id=$post_id' style='float:right; margin-left: 10px;'><button class='btn btn-success'>View</button></a>
+                                        <a href='functions/delete_post.php?post_id=$post_id' style='float:right;'><button class='btn btn-danger'>Delete</button></a>
+                                        
+                                        <br><br><br>
                                 </div><br><br>
                                   
                                   ";
@@ -268,10 +368,11 @@ if(!isset($_SESSION['user_email'])){
                         }
                  ?>
             </div>
+        </div>
     </div>
-</div>
-<?php
+    <?php
         }
 ?>
 </body>
+
 </html>

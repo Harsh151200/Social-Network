@@ -8,63 +8,65 @@ if(!isset($_SESSION['user_email'])){
 }
 ?>
 <html>
+
 <head>
-	
-	<title>Messages</title>
-	<meta charset="utf-8">
- 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="style/home_style2.css">
+
+    <title>Messages</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style/home_style2.css">
 </head>
 <style>
-	#scroll_messages{
-		max-height: 500px;
-		overflow: scroll;
-	}
+#scroll_messages {
+    max-height: 500px;
+    overflow: scroll;
+}
 
-	#btn-msg{
-		width: 20%;
-		height: 28px;
-		border-radius: 5px;
-		margin: 5px;
-		border: none;
-		color: #fff;
-		float: right;
-		background-color: #2ecc71;
-	}
+#btn-msg {
+    width: 20%;
+    height: 28px;
+    border-radius: 5px;
+    margin: 5px;
+    border: none;
+    color: #fff;
+    float: right;
+    background-color: #2ecc71;
+}
 
-	#select_user{
-		max-height: 500px;
-		overflow: scroll;
-	}
+#select_user {
+    max-height: 500px;
+    overflow: scroll;
+}
 
-	#green{
-		background-color: #2ecc71;
-		border-color: #27ae60;
-		width: 40%;
-		padding: 2.5px;
-		font-size: 16px;
-		border-radius: 3px;
-		float: left;
-		margin-bottom: 5px;
-	}
+#green {
+    background-color: #2ecc71;
+    border-color: #27ae60;
+    width: 40%;
+    padding: 2.5px;
+    font-size: 16px;
+    border-radius: 3px;
+    float: left;
+    margin-bottom: 5px;
+}
 
-	#blue{
-		background-color: #3498db;
-		border-color: #2980b9;
-		width: 40%;
-		padding: 2.5px;
-		font-size: 16px;
-		border-radius: 3px;
-		float: right;
-		margin-bottom: 5px;
-	}
+#blue {
+    background-color: #3498db;
+    border-color: #2980b9;
+    width: 40%;
+    padding: 2.5px;
+    font-size: 16px;
+    border-radius: 3px;
+    float: right;
+    margin-bottom: 5px;
+}
 </style>
+
 <body>
-<div class="row">
-		<?php
+    <div class="row">
+        <?php
 			if(isset($_GET['u_id'])){
 				global $con;
 
@@ -72,7 +74,7 @@ if(!isset($_SESSION['user_email'])){
 			
 				if($_GET['u_id'] == 'new')
 				{
-					echo 'none';
+					echo '';
 				}
 
 				else{
@@ -83,6 +85,8 @@ if(!isset($_SESSION['user_email'])){
 	
 					$user_to_msg = $row_user['user_id'];
 					$user_to_name = $row_user['user_name'];
+					$f_name = $row_user['f_name'];
+					$l_name = $row_user['l_name'];
 				}
 			}
 
@@ -94,11 +98,14 @@ if(!isset($_SESSION['user_email'])){
 
 			$user_from_msg = $row['user_id'];
 			$user_from_name = $row['user_name'];
+			
 
 		?>
 
-		<div class="col-sm-3" id = "select_user">
-			<?php
+		
+
+        <div class="col-sm-3" id="select_user">
+            <?php
 				$user = 'Select * from users';
 				$run_user = mysqli_query($con, $user);
 
@@ -123,10 +130,18 @@ if(!isset($_SESSION['user_email'])){
 				}
 			?>
 		</div>
-<br>
-		<div class = 'col-sm-6'>
-				<div class="load_msg" id = "scroll_messages">
-					<?php
+		
+		<br>
+		
+        <div class='col-sm-6'>
+            <div class="load_msg" id="scroll_messages">
+				<?php
+					if($get_id == 'new'){	
+						echo "";	
+					}	
+					else{
+						
+				
 						$sel_msg = "Select * from user_messages where 
 										(user_to = '$user_to_msg' AND user_from = '$user_from_msg')
 										OR
@@ -144,9 +159,10 @@ if(!isset($_SESSION['user_email'])){
 						
 					?>
 
-					<div id = 'loaded_msg'>
-						<p>
-							<?php 
+                <div id='loaded_msg'>
+                    <p>
+				
+                        <?php 
 								if($user_to == $user_to_msg AND $user_from == $user_from_msg)
 								{
 									echo "
@@ -165,15 +181,16 @@ if(!isset($_SESSION['user_email'])){
 									";
 								}
 							?>
-						</p>
-					</div>
+                    </p>
+                </div>
 
-					<?php
-				}	
+                <?php
+				}
+			}	
 			?>
-				</div>
-
-				<?php
+            </div>
+			
+            <?php
 					if(isset($_GET['u_id']))
 					{
 						$u_id = $_GET['u_id'];
@@ -204,7 +221,7 @@ if(!isset($_SESSION['user_email'])){
 					}
 				?>
 
-				<?php
+            <?php
 					if(isset($_POST['send_msg']))
 					{
 						$msg = htmlentities($_POST['msg_box']);
@@ -226,12 +243,17 @@ if(!isset($_SESSION['user_email'])){
 							('$user_to_msg','$user_from_msg','$msg',NOW(),'no')";
 
 							$run_insert = mysqli_query($con,$insert); 
+							echo "<script>window.open('messages.php?u_id=$user_to_msg','_self')</script>";
 						}
 					}
 				?>
-		</div>
-		<div class="col-sm-3">
+        </div>
+        <div class="col-sm-3">
 			<?php
+			if($get_id == 'new'){	
+				echo "";	
+			}	
+			else{
 				if(isset($_GET['u_id'])){
 				global $con;
 
@@ -270,7 +292,7 @@ if(!isset($_SESSION['user_email'])){
                                         <ul class = 'list-group'>
                                             <li class = 'list-group-item' title = 'Username'>
                                                 <strong>
-                                                    $f_name $l_name
+                                                  <h3>  $f_name $l_name </h3>
                                                 </strong>
                                             </li>
 
@@ -307,12 +329,14 @@ if(!isset($_SESSION['user_email'])){
             			   ";
 				}
 			}
-			?>	
-		</div>
-</div>
-<script>
-	var div = document.ElementById("scroll-messages");
-	div.scrollTop = div.scrollHeight;
-</script>
+		}
+			?>
+        </div>
+    </div>
+    <script>
+    var div = document.ElementById("scroll-messages");
+    div.scrollTop = div.scrollHeight;
+    </script>
 </body>
+
 </html>
