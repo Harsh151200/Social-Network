@@ -66,13 +66,10 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-6" style="left:0.5%;">
-			<img src="images/codingcafe.jpeg" class="img-rounded" title="Coding cafe" width="650px" height="565px">
-			<div id="centered1" class="centered"><h3 style="color:white;"><span class="glyphicon glyphicon-search"></span>&nbsp&nbsp<strong>Follow Your Interests.</strong></h3></div>
-			<div id="centered2" class="centered"><h3 style="color:white;"><span class="glyphicon glyphicon-search"></span>&nbsp&nbsp<strong>Hear what People are talking about.</strong></h3></div>
-			<div id="centered3" class="centered"><h3 style="color:white;"><span class="glyphicon glyphicon-search"></span>&nbsp&nbsp<strong>Join the Conversation.</strong></h3></div>
-		</div>
+			<img src="images/655.jpg" class="img-rounded" title="Coding cafe" width="650px" height="565px">
+				</div>
 		<div class="col-sm-6" style="left:8%;">
-			<img src="images/codingcafelogo.png" class="img-rounded" title="Coding cafe" width="80px" height="80px">
+			<!-- <img src="images/codingcafelogo.png" class="img-rounded" title="Coding cafe" width="80px" height="80px"> -->
 			<h2><strong>See what's happening in <br> the world right now</strong></h2><br><br>
 			<h4><strong>join Coding Cafe Today.</strong></h4>
 			<form method="post" action="">

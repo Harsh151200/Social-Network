@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2020 at 06:17 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.4.8
+-- Generation Time: Nov 25, 2020 at 08:26 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -42,7 +43,10 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`com_id`, `post_id`, `user_id`, `comment`, `comment_author`, `date`) VALUES
 (1, 3, 2, 'amazing', 'mihir_parmar_745616', '2020-11-17 07:41:58'),
-(2, 4, 2, 'Hey', 'mihir_parmar_745616', '2020-11-24 10:16:01');
+(2, 4, 2, 'Hey', 'mihir_parmar_745616', '2020-11-24 10:16:01'),
+(3, 5, 2, 'Amazing', 'mihir_parmar_1911', '2020-11-25 06:06:35'),
+(4, 13, 3, 'Great , Tanuj ...Tcs Notes is amazing', 'tanuj_patel_170745', '2020-11-25 06:28:39'),
+(5, 13, 3, 'Hey tanuj you did a great job', 'riddhi_siddhapura_111093', '2020-11-25 06:48:56');
 
 -- --------------------------------------------------------
 
@@ -94,6 +98,22 @@ INSERT INTO `like` (`user_id`, `post_id`) VALUES
 ('', '12'),
 ('', '11'),
 ('', '8'),
+('', '5'),
+('', '12'),
+('', '11'),
+('', '8'),
+('', '5'),
+('', '12'),
+('', '8'),
+('', '5'),
+('', '4'),
+('', '13'),
+('', '12'),
+('', '8'),
+('', '5'),
+('', '13'),
+('', '12'),
+('', '8'),
 ('', '5');
 
 --
@@ -126,11 +146,12 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `user_id`, `post_content`, `upload_image`, `post_date`, `no_of_likes`) VALUES
-(4, 2, 'Hello !!', '', '2020-11-18 06:30:52', 7),
-(5, 2, 'How are you ?', '', '2020-11-18 06:31:14', 7),
-(8, 2, 'No', 'Screenshot (18).png.71', '2020-11-18 12:15:56', 3),
-(11, 2, 'Hii', '2019-10-07 (4).png.100', '2020-11-24 18:12:31', 3),
-(12, 1, 'Hey there!!', '2020-11-24 (8).png.29', '2020-11-24 18:50:21', 1);
+(4, 2, 'Hello !!', '', '2020-11-18 06:30:52', 8),
+(5, 2, 'How are you ?', '', '2020-11-18 06:31:14', 11),
+(8, 2, 'No', 'Screenshot (18).png.71', '2020-11-18 12:15:56', 7),
+(12, 1, 'Hey there!!', '2020-11-24 (8).png.29', '2020-11-24 18:50:21', 5),
+(13, 3, 'Hello!!', 'Screenshot (1).png.62', '2020-11-25 06:23:09', 2),
+(14, 4, 'Hello!!', 'Tanuj.jpg.7', '2020-11-25 06:50:31', 0);
 
 --
 -- Triggers `posts`
@@ -180,8 +201,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `f_name`, `l_name`, `user_name`, `describe_user`, `Relationship`, `user_pass`, `user_email`, `user_country`, `user_gender`, `user_birthday`, `user_image`, `user_cover`, `user_reg_date`, `status`, `posts`, `recovery_account`, `no_of_posts`) VALUES
-(1, 'Harsh', 'Patel', 'harsh_patel_736619', 'Hello Coding Cafe.This is my default status!', '...', 'harsh1512', 'harsh@gmail.com', 'India', 'Male', '2020-12-15', '2020-01-04 (1).png.11', 'default_cover.jpg', '2020-11-17 06:55:55', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 1),
-(2, 'Mihir', 'Parmar', 'mihir_parmar_1911', 'Hello Coding Cafe.This is my default status!', 'Single', 'mihir1911', 'mihir@gmail.com', 'India', 'Male', '2020-11-19', '2020-11-11 (8).png.30', 'default_cover.jpg', '2020-11-17 06:56:40', 'verified', 'yes', 'Nang', 4);
+(1, 'Harsh', 'Patel', 'harsh_patel_736619', 'Hello Coding Cafe.This is my default status!', '...', 'harsh1512', 'harsh@gmail.com', 'India', 'Male', '2020-12-15', 'Profile-img.png.57', 'default_cover.jpg', '2020-11-17 06:55:55', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 1),
+(2, 'Mihir', 'Patel', 'mihir_parmar_1911', 'Hello Coding Cafe.This is my default status!', 'Single', 'mihir1911', 'mihir@gmail.com', 'India', 'Male', '2020-11-19', 'WhatsApp Image 2020-11-25 at 12.53.08 PM.jpeg.100', 'default_cover.jpg', '2020-11-17 06:56:40', 'verified', 'yes', 'Nang', 3),
+(3, 'Tanuj', 'Patel', 'tanuj_patel_170745', 'Hello Coding Cafe.This is my default status!', '...', 'tanuj12345', 'tanuj@gmail.com', 'India', 'Male', '2020-11-28', 'Tanuj.jpg.79', 'default_cover.jpg', '2020-11-25 06:21:38', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 1),
+(4, 'Riddhi', 'Siddhapura', 'riddhi_siddhapura_111093', 'Hello Coding Cafe.This is my default status!', '...', 'riddhi12345', 'riddhi@gmail.com', 'India', 'Male', '2020-05-15', 'Riddhi.jpg.58', 'default_cover.jpg', '2020-11-25 06:46:09', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 1);
 
 -- --------------------------------------------------------
 
@@ -197,36 +220,6 @@ CREATE TABLE `user_messages` (
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `msg_seen` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_messages`
---
-
-INSERT INTO `user_messages` (`id`, `user_to`, `user_from`, `msg_body`, `date`, `msg_seen`) VALUES
-(1, 4, 1, '							Hello		', '2020-11-12 06:32:22', 'no'),
-(2, 3, 1, '									Hello\r\n', '2020-11-12 07:00:38', 'no'),
-(3, 3, 1, '						Hii			', '2020-11-12 07:01:00', 'no'),
-(4, 3, 1, '									there', '2020-11-12 07:02:40', 'no'),
-(5, 3, 1, '									there', '2020-11-12 07:02:45', 'no'),
-(6, 1, 3, '									Hii', '2020-11-12 07:02:58', 'no'),
-(7, 1, 3, '								hii	', '2020-11-12 07:07:28', 'no'),
-(8, 3, 1, '									hey\r\n', '2020-11-12 07:10:40', 'no'),
-(9, 3, 1, '									there', '2020-11-12 07:10:44', 'no'),
-(10, 3, 1, '									how', '2020-11-12 07:10:49', 'no'),
-(11, 3, 1, '									how', '2020-11-12 07:12:19', 'no'),
-(12, 3, 1, '									how', '2020-11-12 07:12:23', 'no'),
-(13, 2, 1, '						Hii Nang			', '2020-11-24 18:52:22', 'no'),
-(14, 2, 1, '									', '2020-11-24 18:52:23', 'no'),
-(15, 1, 2, '									Hii ', '2020-11-24 19:09:10', 'no'),
-(16, 1, 2, '									Hii again', '2020-11-24 19:14:40', 'no'),
-(17, 1, 2, '									Hii again', '2020-11-24 19:14:56', 'no'),
-(18, 1, 2, '									Hii again', '2020-11-24 19:15:43', 'no'),
-(19, 1, 2, '									Hii again', '2020-11-24 19:16:27', 'no'),
-(20, 2, 1, '								Hello', '2020-11-24 19:17:22', 'no'),
-(21, 2, 1, '								Hello', '2020-11-24 19:18:59', 'no'),
-(22, 2, 1, '								Hey', '2020-11-24 19:19:06', 'no'),
-(23, 2, 1, '									Hello', '2020-11-24 19:19:14', 'no'),
-(24, 1, 2, '									Hii again', '2020-11-24 19:19:36', 'no');
 
 --
 -- Indexes for dumped tables
@@ -264,25 +257,25 @@ ALTER TABLE `user_messages`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_messages`
 --
 ALTER TABLE `user_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

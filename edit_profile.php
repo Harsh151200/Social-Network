@@ -234,7 +234,6 @@ if(!isset($_SESSION['user_email'])){
             $u_country = htmlentities($_POST['u_country']);
             $u_gender = htmlentities($_POST['u_gender']);
             $u_birthday = htmlentities($_POST['u_birthday']);
-            echo "<script>alert('$user_id');</script>";
             $update = "UPDATE `users` SET f_name='$f_name', user_name ='$u_name',l_name='$l_name',  describe_user='$describe_user',
             Relationship='$Relationship_status', user_pass='$u_pass', user_email='$u_email', user_country='$u_country',
             user_gender='$u_gender', user_birthday='$u_birthday' WHERE user_id='$user_id'";
