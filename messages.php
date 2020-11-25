@@ -224,17 +224,15 @@ if(!isset($_SESSION['user_email'])){
             <?php
 					if(isset($_POST['send_msg']))
 					{
-						$msg = htmlentities($_POST['msg_box']);
+						$msg = trim($_POST['msg_box']);
 
-						if($msg == '')
+						if(strlen($msg) <= 0)
 						{
-							echo "<h4 style = 'colr:red; text-align:center;'>Message was unable to send!</h4>";
+							echo "<script>alert('Message was unable to send')</script>";
 						}
-
 						else if(strlen($msg) > 37)
 						{
-							echo "<h4 style = 'colr:red; text-align:center;'>Message 
-							is Long! Use only 37 Charecters</h4>";
+							echo "<script>alert('Message is long! only 37 charachters allowed')</script>";
 
 						}
 						else
