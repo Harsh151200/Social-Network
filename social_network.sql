@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2020 at 10:28 AM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Generation Time: Nov 25, 2020 at 06:17 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -42,7 +41,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`com_id`, `post_id`, `user_id`, `comment`, `comment_author`, `date`) VALUES
-(1, 3, 2, 'amazing', 'mihir_parmar_745616', '2020-11-17 07:41:58');
+(1, 3, 2, 'amazing', 'mihir_parmar_745616', '2020-11-17 07:41:58'),
+(2, 4, 2, 'Hey', 'mihir_parmar_745616', '2020-11-24 10:16:01');
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,28 @@ CREATE TABLE `like` (
 
 INSERT INTO `like` (`user_id`, `post_id`) VALUES
 ('1', '2'),
-('2', '1');
+('2', '1'),
+('1', '4'),
+('2', '5'),
+('2', '4'),
+('2', '5'),
+('2', '4'),
+('2', '5'),
+('2', '4'),
+('2', '5'),
+('2', '4'),
+('2', '8'),
+('2', '5'),
+('2', '4'),
+('', '11'),
+('2', '11'),
+('2', '8'),
+('2', '5'),
+('2', '4'),
+('', '12'),
+('', '11'),
+('', '8'),
+('', '5');
 
 --
 -- Triggers `like`
@@ -96,18 +117,20 @@ CREATE TABLE `posts` (
   `user_id` int(11) NOT NULL,
   `post_content` varchar(255) NOT NULL,
   `upload_image` varchar(255) NOT NULL,
-  `post_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `post_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `no_of_likes` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`post_id`, `user_id`, `post_content`, `upload_image`, `post_date`) VALUES
-(4, 2, 'Hello !!', '', '2020-11-18 06:30:52'),
-(5, 2, 'How are you ?', '', '2020-11-18 06:31:14'),
-(8, 2, 'No', 'Screenshot (18).png.71', '2020-11-18 12:15:56'),
-(10, 2, 'hello!!', 'Screenshot (23).png.29', '2020-11-24 09:15:28');
+INSERT INTO `posts` (`post_id`, `user_id`, `post_content`, `upload_image`, `post_date`, `no_of_likes`) VALUES
+(4, 2, 'Hello !!', '', '2020-11-18 06:30:52', 7),
+(5, 2, 'How are you ?', '', '2020-11-18 06:31:14', 7),
+(8, 2, 'No', 'Screenshot (18).png.71', '2020-11-18 12:15:56', 3),
+(11, 2, 'Hii', '2019-10-07 (4).png.100', '2020-11-24 18:12:31', 3),
+(12, 1, 'Hey there!!', '2020-11-24 (8).png.29', '2020-11-24 18:50:21', 1);
 
 --
 -- Triggers `posts`
@@ -157,8 +180,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `f_name`, `l_name`, `user_name`, `describe_user`, `Relationship`, `user_pass`, `user_email`, `user_country`, `user_gender`, `user_birthday`, `user_image`, `user_cover`, `user_reg_date`, `status`, `posts`, `recovery_account`, `no_of_posts`) VALUES
-(1, 'Harsh', 'Patel', 'harsh_patel_736619', 'Hello Coding Cafe.This is my default status!', '...', 'harsh1512', 'harsh@gmail.com', 'India', 'Male', '2020-12-15', '2020-01-04 (1).png.11', 'default_cover.jpg', '2020-11-17 06:55:55', 'verified', 'no', 'Iwanttoputading intheuniverse.', 0),
-(2, 'Mihir', 'Parmar', 'mihir_parmar_745616', 'Hello Coding Cafe.This is my default status!', '...', 'mihir1911', 'mihir@gmail.com', 'India', 'Male', '2020-11-19', '2020-11-11 (5).png.93', 'default_cover.jpg', '2020-11-17 06:56:40', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 4);
+(1, 'Harsh', 'Patel', 'harsh_patel_736619', 'Hello Coding Cafe.This is my default status!', '...', 'harsh1512', 'harsh@gmail.com', 'India', 'Male', '2020-12-15', '2020-01-04 (1).png.11', 'default_cover.jpg', '2020-11-17 06:55:55', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 1),
+(2, 'Mihir', 'Parmar', 'mihir_parmar_1911', 'Hello Coding Cafe.This is my default status!', 'Single', 'mihir1911', 'mihir@gmail.com', 'India', 'Male', '2020-11-19', '2020-11-11 (8).png.30', 'default_cover.jpg', '2020-11-17 06:56:40', 'verified', 'yes', 'Nang', 4);
 
 -- --------------------------------------------------------
 
@@ -191,7 +214,19 @@ INSERT INTO `user_messages` (`id`, `user_to`, `user_from`, `msg_body`, `date`, `
 (9, 3, 1, '									there', '2020-11-12 07:10:44', 'no'),
 (10, 3, 1, '									how', '2020-11-12 07:10:49', 'no'),
 (11, 3, 1, '									how', '2020-11-12 07:12:19', 'no'),
-(12, 3, 1, '									how', '2020-11-12 07:12:23', 'no');
+(12, 3, 1, '									how', '2020-11-12 07:12:23', 'no'),
+(13, 2, 1, '						Hii Nang			', '2020-11-24 18:52:22', 'no'),
+(14, 2, 1, '									', '2020-11-24 18:52:23', 'no'),
+(15, 1, 2, '									Hii ', '2020-11-24 19:09:10', 'no'),
+(16, 1, 2, '									Hii again', '2020-11-24 19:14:40', 'no'),
+(17, 1, 2, '									Hii again', '2020-11-24 19:14:56', 'no'),
+(18, 1, 2, '									Hii again', '2020-11-24 19:15:43', 'no'),
+(19, 1, 2, '									Hii again', '2020-11-24 19:16:27', 'no'),
+(20, 2, 1, '								Hello', '2020-11-24 19:17:22', 'no'),
+(21, 2, 1, '								Hello', '2020-11-24 19:18:59', 'no'),
+(22, 2, 1, '								Hey', '2020-11-24 19:19:06', 'no'),
+(23, 2, 1, '									Hello', '2020-11-24 19:19:14', 'no'),
+(24, 1, 2, '									Hii again', '2020-11-24 19:19:36', 'no');
 
 --
 -- Indexes for dumped tables
@@ -229,13 +264,13 @@ ALTER TABLE `user_messages`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -247,7 +282,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_messages`
 --
 ALTER TABLE `user_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
