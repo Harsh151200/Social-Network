@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Coding Cafe login and signup</title>
+	<title>Social Circle login and signup</title>
 	<meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -60,18 +60,18 @@
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="well">
-				<center><h1 style="color: white;">Coding Cafe</h1></center>
+				<center><h1 style="color: white;">Social Circle</h1></center>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-sm-6" style="left:0.5%;">
-			<img src="images/655.jpg" class="img-rounded" title="Coding cafe" width="650px" height="565px">
+			<img src="images/655.jpg" class="img-rounded" title="Social Circle" width="650px" height="565px">
 				</div>
 		<div class="col-sm-6" style="left:8%;">
-			<!-- <img src="images/codingcafelogo.png" class="img-rounded" title="Coding cafe" width="80px" height="80px"> -->
+			<!-- <img src="images/codingcafelogo.png" class="img-rounded" title="Social Circle" width="80px" height="80px"> -->
 			<h2><strong>See what's happening in <br> the world right now</strong></h2><br><br>
-			<h4><strong>join Coding Cafe Today.</strong></h4>
+			<h4><strong>join Social Circle Today.</strong></h4>
 			<form method="post" action="">
 				<button id="signup" class="btn btn-info btn-lg" name="signup">Sign up</button><br><br>
 				<?php

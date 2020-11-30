@@ -201,10 +201,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `f_name`, `l_name`, `user_name`, `describe_user`, `Relationship`, `user_pass`, `user_email`, `user_country`, `user_gender`, `user_birthday`, `user_image`, `user_cover`, `user_reg_date`, `status`, `posts`, `recovery_account`, `no_of_posts`) VALUES
-(1, 'Harsh', 'Patel', 'harsh_patel_736619', 'Hello Coding Cafe.This is my default status!', '...', 'harsh1512', 'harsh@gmail.com', 'India', 'Male', '2020-12-15', 'Profile-img.png.57', 'default_cover.jpg', '2020-11-17 06:55:55', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 1),
-(2, 'Mihir', 'Patel', 'mihir_parmar_1911', 'Hello Coding Cafe.This is my default status!', 'Single', 'mihir1911', 'mihir@gmail.com', 'India', 'Male', '2020-11-19', 'WhatsApp Image 2020-11-25 at 12.53.08 PM.jpeg.100', 'default_cover.jpg', '2020-11-17 06:56:40', 'verified', 'yes', 'Nang', 3),
-(3, 'Tanuj', 'Patel', 'tanuj_patel_170745', 'Hello Coding Cafe.This is my default status!', '...', 'tanuj12345', 'tanuj@gmail.com', 'India', 'Male', '2020-11-28', 'Tanuj.jpg.79', 'default_cover.jpg', '2020-11-25 06:21:38', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 1),
-(4, 'Riddhi', 'Siddhapura', 'riddhi_siddhapura_111093', 'Hello Coding Cafe.This is my default status!', '...', 'riddhi12345', 'riddhi@gmail.com', 'India', 'Male', '2020-05-15', 'Riddhi.jpg.58', 'default_cover.jpg', '2020-11-25 06:46:09', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 1);
+(1, 'Harsh', 'Patel', 'harsh_patel_736619', 'Hello Social Circle.This is my default status!', '...', 'harsh1512', 'harsh@gmail.com', 'India', 'Male', '2020-12-15', 'Profile-img.png.57', 'default_cover.jpg', '2020-11-17 06:55:55', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 1),
+(2, 'Mihir', 'Patel', 'mihir_parmar_1911', 'Hello Social Circle.This is my default status!', 'Single', 'mihir1911', 'mihir@gmail.com', 'India', 'Male', '2020-11-19', 'WhatsApp Image 2020-11-25 at 12.53.08 PM.jpeg.100', 'default_cover.jpg', '2020-11-17 06:56:40', 'verified', 'yes', 'Nang', 3),
+(3, 'Tanuj', 'Patel', 'tanuj_patel_170745', 'Hello Social Circle.This is my default status!', '...', 'tanuj12345', 'tanuj@gmail.com', 'India', 'Male', '2020-11-28', 'Tanuj.jpg.79', 'default_cover.jpg', '2020-11-25 06:21:38', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 1),
+(4, 'Riddhi', 'Siddhapura', 'riddhi_siddhapura_111093', 'Hello Social Circle.This is my default status!', '...', 'riddhi12345', 'riddhi@gmail.com', 'India', 'Male', '2020-05-15', 'Riddhi.jpg.58', 'default_cover.jpg', '2020-11-25 06:46:09', 'verified', 'yes', 'Iwanttoputading intheuniverse.', 1);
 
 -- --------------------------------------------------------
 
