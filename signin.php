@@ -49,7 +49,7 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="well">
-			<center><h1 style="color: white;">Coding Cafe</h1></center>
+			<center><h1 style="color: white;">Social Circle</h1></center>
 		</div>
 	</div>
 </div>
@@ -57,7 +57,7 @@
 	<div class="col-sm-12">
 		<div class="main-content">
 			<div class="header">
-				<h3 style="text-align: center;"><strong>Login to Coding Cafe</strong></h3>
+				<h3 style="text-align: center;"><strong>Login to Social Circle</strong></h3>
 			</div>
 			<div class="l-part">
 				<form action="" method="post">

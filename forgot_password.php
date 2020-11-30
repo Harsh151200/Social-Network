@@ -42,7 +42,7 @@
     <div class = "col-sm-12">
         <div class = "well">
             <center>
-                <h1 style="color: white;"><strong>Coding Cafe</strong></h1>
+                <h1 style="color: white;"><strong>Social Circle</strong></h1>
             </center>
         </div>
     </div>
